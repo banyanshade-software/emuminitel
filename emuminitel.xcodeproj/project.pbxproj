@@ -15,8 +15,8 @@
 		1B04E9F72B9B8EF800BBB9D8 /* emuminitelUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B04E9F62B9B8EF800BBB9D8 /* emuminitelUITests.m */; };
 		1B04E9F92B9B8EF800BBB9D8 /* emuminitelUITestsLaunchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B04E9F82B9B8EF800BBB9D8 /* emuminitelUITestsLaunchTests.m */; };
 		1B04EA092B9B911A00BBB9D8 /* MinitelCtl.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B04EA082B9B911A00BBB9D8 /* MinitelCtl.m */; };
-		1B04EA0B2B9B974700BBB9D8 /* web in Resources */ = {isa = PBXBuildFile; fileRef = 1B04EA0A2B9B974700BBB9D8 /* web */; };
 		1B04EA0F2B9B9E4100BBB9D8 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B04EA0E2B9B9E4100BBB9D8 /* WebKit.framework */; };
+		1B04EA1C2B9BA2C000BBB9D8 /* web in Resources */ = {isa = PBXBuildFile; fileRef = 1B04EA0A2B9B974700BBB9D8 /* web */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +54,12 @@
 		1B04EA0A2B9B974700BBB9D8 /* web */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = web; sourceTree = SOURCE_ROOT; };
 		1B04EA0C2B9B9E3300BBB9D8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		1B04EA0E2B9B9E4100BBB9D8 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		1B04EA102B9BA21E00BBB9D8 /* app */ = {isa = PBXFileReference; lastKnownFileType = folder; name = app; path = web/app; sourceTree = "<group>"; };
+		1B04EA112B9BA21E00BBB9D8 /* font */ = {isa = PBXFileReference; lastKnownFileType = folder; name = font; path = web/font; sourceTree = "<group>"; };
+		1B04EA122B9BA21E00BBB9D8 /* library */ = {isa = PBXFileReference; lastKnownFileType = folder; name = library; path = web/library; sourceTree = "<group>"; };
+		1B04EA132B9BA21E00BBB9D8 /* css */ = {isa = PBXFileReference; lastKnownFileType = folder; name = css; path = web/css; sourceTree = "<group>"; };
+		1B04EA142B9BA21E00BBB9D8 /* index.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = index.html; path = web/index.html; sourceTree = "<group>"; };
+		1B04EA152B9BA21E00BBB9D8 /* sound */ = {isa = PBXFileReference; lastKnownFileType = folder; name = sound; path = web/sound; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +91,12 @@
 		1B04E9CD2B9B8EF500BBB9D8 = {
 			isa = PBXGroup;
 			children = (
+				1B04EA102B9BA21E00BBB9D8 /* app */,
+				1B04EA132B9BA21E00BBB9D8 /* css */,
+				1B04EA112B9BA21E00BBB9D8 /* font */,
+				1B04EA142B9BA21E00BBB9D8 /* index.html */,
+				1B04EA122B9BA21E00BBB9D8 /* library */,
+				1B04EA152B9BA21E00BBB9D8 /* sound */,
 				1B04E9D82B9B8EF500BBB9D8 /* emuminitel */,
 				1B04E9EB2B9B8EF800BBB9D8 /* emuminitelTests */,
 				1B04E9F52B9B8EF800BBB9D8 /* emuminitelUITests */,
@@ -248,9 +260,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1B04EA0B2B9B974700BBB9D8 /* web in Resources */,
 				1B04E9DD2B9B8EF800BBB9D8 /* Assets.xcassets in Resources */,
 				1B04E9E02B9B8EF800BBB9D8 /* MainMenu.xib in Resources */,
+				1B04EA1C2B9BA2C000BBB9D8 /* web in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

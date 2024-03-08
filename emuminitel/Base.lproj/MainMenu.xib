@@ -689,15 +689,18 @@
         <window title="emuminitel" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="QvC-M9-y7g">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="335" y="390" width="1086" height="771"/>
+            <rect key="contentRect" x="335" y="390" width="1086" height="962"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1080"/>
             <view key="contentView" id="EiT-Mj-1SZ">
-                <rect key="frame" x="0.0" y="0.0" width="1086" height="771"/>
+                <rect key="frame" x="0.0" y="0.0" width="1086" height="832"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <wkWebView wantsLayer="YES" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PoI-Kz-USp">
-                        <rect key="frame" x="20" y="20" width="917" height="731"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                    <wkWebView wantsLayer="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PoI-Kz-USp">
+                        <rect key="frame" x="20" y="20" width="640" height="792"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="792" id="ISP-rb-2o8"/>
+                            <constraint firstAttribute="width" constant="640" id="ilS-Sn-hZI"/>
+                        </constraints>
                         <wkWebViewConfiguration key="configuration">
                             <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
                             <wkPreferences key="preferences"/>
@@ -708,8 +711,13 @@
                         </connections>
                     </wkWebView>
                 </subviews>
+                <constraints>
+                    <constraint firstItem="PoI-Kz-USp" firstAttribute="top" secondItem="EiT-Mj-1SZ" secondAttribute="top" constant="20" symbolic="YES" id="1sI-Ub-aIv"/>
+                    <constraint firstItem="PoI-Kz-USp" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" constant="20" symbolic="YES" id="aMj-Ed-ohb"/>
+                    <constraint firstAttribute="bottom" secondItem="PoI-Kz-USp" secondAttribute="bottom" constant="20" symbolic="YES" id="oes-11-JHL"/>
+                </constraints>
             </view>
-            <point key="canvasLocation" x="282" y="414.5"/>
+            <point key="canvasLocation" x="282" y="510"/>
         </window>
     </objects>
 </document>

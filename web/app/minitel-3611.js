@@ -20,18 +20,14 @@
  * @param {string} webSocketURL URL of the web socket to connect to.
  */
 function minitel(screenCanvasId, color, speed, keyboardId, bipId, webSocketURL) {
-    importHTML
-        .install()
-        .then(() => {
-            const socket = null //new WebSocket(webSocketURL)
-            const canvas = document.getElementById(screenCanvasId)
-            const screen = new MinitelScreen(canvas)
-            const keyboard = new Keyboard(document.getElementById(keyboardId))
-            const bip = document.getElementById(bipId)
+       const socket = null //new WebSocket(webSocketURL)
+       const canvas = document.getElementById(screenCanvasId)
+       const screen = new MinitelScreen(canvas)
+       const keyboard = new Keyboard(document.getElementById(keyboardId))
+       const bip = document.getElementById(bipId)
 
-            new MinitelEmulator(canvas, keyboard, socket, bip).setColor(color)
+       new MinitelEmulator(canvas, keyboard, socket, bip).setColor(color)
                                                               .setRefresh(speed)
-        })
 }
 
 minitel(

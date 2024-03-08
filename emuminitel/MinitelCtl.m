@@ -18,11 +18,12 @@
 }
 - (void) loadHtml
 {
-    NSURL *u = [[NSBundle mainBundle] URLForResource:@"web/index" withExtension:@"html"];
+    NSURL *u = [[NSBundle mainBundle] URLForResource:@"index" withExtension:@"html" subdirectory:@"web"];
+    NSURL *u0 = [u URLByDeletingLastPathComponent];
     NSAssert(u, @"index.html missing");
     NSError *err;
-    NSString *ctohtml = [NSString stringWithContentsOfURL:u encoding:NSUTF8StringEncoding error:&err];
-    WKNavigation *nv = [_m1 loadHTMLString:ctohtml baseURL:nil];
+    NSString *mntlhtml = [NSString stringWithContentsOfURL:u encoding:NSUTF8StringEncoding error:&err];
+    WKNavigation *nv = [_m1 loadHTMLString:mntlhtml baseURL:u0];
     NSAssert(nv, @"load failed");
     
     /*dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
