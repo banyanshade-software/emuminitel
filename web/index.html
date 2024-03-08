@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>3611.re - le retour de l'Annuaire Electronique Minitel</title>
+    <link rel="stylesheet" href="css/minitel-keyboard.css" />
+  </head>
+  <body>
+    <div id="miedit">
+      <canvas id="minitel-screen"></canvas>
+      <import src="import/keyboard-grid.html"></import>
+    </div>
+
+    <script src="library/generichelper/generichelper.js"></script>
+    <script src="library/query-parameters/query-parameters.js"></script>
+    <script src="library/finite-stack/finite-stack.js"></script>
+
+    <script src="library/import-html/import-html.js"></script>
+    <script src="library/autocallback/autocallback.js"></script>
+    <script src="library/key-simulator/key-simulator.js"></script>
+
+    <script src="library/minitel/constant.js"></script>
+    <script src="library/minitel/stream.js"></script>
+
+    <script src="app/font-sprite.js"></script>
+    <script src="app/page-cell.js"></script>
+    <script src="app/page-memory.js"></script>
+    <script src="app/keyboard.js"></script>
+    <script src="app/minitel-decoder.js"></script>
+    <script src="app/minitel-screen.js"></script>
+    <script src="app/minitel-emulator.js"></script>
+
+    <script src="app/minitel-3611.js"></script>
+  </body>
+</html>
