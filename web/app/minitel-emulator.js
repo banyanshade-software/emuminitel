@@ -42,7 +42,7 @@ class MinitelEmulator {
          */
         this.socket = null
 
-        if(socket !== null) {
+        if (socket !== null) {
             socket.onopen = openEvent => {
                 this.socket = socket
 
@@ -59,6 +59,8 @@ class MinitelEmulator {
             socket.onclose = closeEvent => {
                 this.pageMemory.setStatusCharacter(0x46)
             }
+        } else {
+            this.pageMemory.setStatusCharacter(0x4C)
         }
 
         const sender = message => {

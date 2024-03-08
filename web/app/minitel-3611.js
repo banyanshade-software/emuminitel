@@ -23,7 +23,7 @@ function minitel(screenCanvasId, color, speed, keyboardId, bipId, webSocketURL) 
     importHTML
         .install()
         .then(() => {
-            const socket = new WebSocket(webSocketURL)
+            const socket = null //new WebSocket(webSocketURL)
             const canvas = document.getElementById(screenCanvasId)
             const screen = new MinitelScreen(canvas)
             const keyboard = new Keyboard(document.getElementById(keyboardId))
@@ -40,5 +40,5 @@ minitel(
     1200,
     "miedit",
     "minitel-bip",
-    "ws://3611.re/ws"
+    null // "ws://3611.re/ws"
 )
