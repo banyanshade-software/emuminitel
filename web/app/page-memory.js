@@ -32,7 +32,7 @@ class PageMemory {
      * @param {boolean} color true for color, false for black and white
      */
     constructor(grid, char, canvas, color) {
-        const frameRate = 50 // Frame per second
+        const frameRate = 10 // Frame per second
 
         /**
          * @member {Grid}

@@ -72,6 +72,6 @@ minitelSetStatusChar("X")
 minitelSendString("hello world")
 minitelSendString("hello world")
 */
-//m.pageMemory.forceRedraw()
+m.pageMemory.forceRedraw()
 //m.pageMemory.render()
 //m.send(["H", "e", "l", "l", "o", " ", "w", "o", "r", 'd'])
