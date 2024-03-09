@@ -18,6 +18,11 @@
                 <outlet property="m1" destination="PoI-Kz-USp" id="chC-pY-xkX"/>
             </connections>
         </customObject>
+        <customObject id="Fca-of-h5i" customClass="MinitelCtl">
+            <connections>
+                <outlet property="m1" destination="Riz-NX-07g" id="mQn-W3-Jrj"/>
+            </connections>
+        </customObject>
         <customObject id="Voe-Tx-rLC" customClass="AppDelegate">
             <connections>
                 <outlet property="window" destination="QvC-M9-y7g" id="gIp-Ho-8D9"/>
@@ -689,10 +694,10 @@
         <window title="emuminitel" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="QvC-M9-y7g">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="335" y="390" width="1086" height="962"/>
+            <rect key="contentRect" x="335" y="390" width="1432" height="879"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1080"/>
             <view key="contentView" id="EiT-Mj-1SZ">
-                <rect key="frame" x="0.0" y="0.0" width="1086" height="884"/>
+                <rect key="frame" x="0.0" y="0.0" width="1344" height="884"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <wkWebView wantsLayer="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PoI-Kz-USp">
@@ -708,6 +713,21 @@
                         <connections>
                             <outlet property="UIDelegate" destination="OEM-lQ-5ov" id="7ki-Vj-Zy1"/>
                             <outlet property="navigationDelegate" destination="OEM-lQ-5ov" id="KUu-j7-e45"/>
+                        </connections>
+                    </wkWebView>
+                    <wkWebView wantsLayer="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Riz-NX-07g">
+                        <rect key="frame" x="680" y="20" width="644" height="795"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="795" id="UsX-G0-zj1"/>
+                            <constraint firstAttribute="width" constant="644" id="cpJ-Qf-ped"/>
+                        </constraints>
+                        <wkWebViewConfiguration key="configuration" suppressesIncrementalRendering="YES">
+                            <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                            <wkPreferences key="preferences" javaScriptCanOpenWindowsAutomatically="NO"/>
+                        </wkWebViewConfiguration>
+                        <connections>
+                            <outlet property="UIDelegate" destination="Fca-of-h5i" id="Gmg-7g-zqO"/>
+                            <outlet property="navigationDelegate" destination="Fca-of-h5i" id="VZM-hH-Lfy"/>
                         </connections>
                     </wkWebView>
                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Zmx-Ji-D0c">
@@ -730,24 +750,51 @@
                             <action selector="test2:" target="OEM-lQ-5ov" id="p5J-Da-S3A"/>
                         </connections>
                     </button>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="gXS-kW-bGW">
+                        <rect key="frame" x="109" y="837" width="52" height="32"/>
+                        <buttonCell key="cell" type="push" title="T3" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="kO2-eX-otG">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="test3:" target="OEM-lQ-5ov" id="RGF-Ml-hhr"/>
+                        </connections>
+                    </button>
                     <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="rX2-cQ-rFK">
                         <rect key="frame" x="20" y="821" width="644" height="5"/>
                     </box>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="KUT-Du-3AI">
+                        <rect key="frame" x="159" y="837" width="50" height="32"/>
+                        <buttonCell key="cell" type="push" title="T4" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="zPd-OJ-ytW">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="test4:" target="OEM-lQ-5ov" id="pKj-Ud-ccZ"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="wgf-eC-C93" firstAttribute="leading" secondItem="Zmx-Ji-D0c" secondAttribute="trailing" constant="12" symbolic="YES" id="0Ym-xe-97h"/>
                     <constraint firstItem="PoI-Kz-USp" firstAttribute="leading" secondItem="rX2-cQ-rFK" secondAttribute="leading" id="3hT-jB-HXf"/>
+                    <constraint firstItem="gXS-kW-bGW" firstAttribute="leading" secondItem="wgf-eC-C93" secondAttribute="trailing" constant="12" symbolic="YES" id="4wQ-yd-a94"/>
+                    <constraint firstItem="Riz-NX-07g" firstAttribute="leading" secondItem="PoI-Kz-USp" secondAttribute="trailing" constant="16" id="69E-1s-ggj"/>
                     <constraint firstItem="wgf-eC-C93" firstAttribute="firstBaseline" secondItem="Zmx-Ji-D0c" secondAttribute="firstBaseline" id="9b5-3n-faP"/>
+                    <constraint firstItem="KUT-Du-3AI" firstAttribute="leading" secondItem="gXS-kW-bGW" secondAttribute="trailing" constant="12" symbolic="YES" id="BDY-mb-9xc"/>
+                    <constraint firstItem="gXS-kW-bGW" firstAttribute="firstBaseline" secondItem="wgf-eC-C93" secondAttribute="firstBaseline" id="DIM-gG-g2v"/>
+                    <constraint firstAttribute="trailing" secondItem="Riz-NX-07g" secondAttribute="trailing" constant="20" symbolic="YES" id="Dxm-7b-QtZ"/>
                     <constraint firstItem="PoI-Kz-USp" firstAttribute="trailing" secondItem="rX2-cQ-rFK" secondAttribute="trailing" id="Vuh-Tr-8FJ"/>
                     <constraint firstItem="PoI-Kz-USp" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" constant="20" symbolic="YES" id="aMj-Ed-ohb"/>
                     <constraint firstItem="Zmx-Ji-D0c" firstAttribute="top" secondItem="EiT-Mj-1SZ" secondAttribute="top" constant="20" symbolic="YES" id="c85-34-PP3"/>
+                    <constraint firstItem="Riz-NX-07g" firstAttribute="top" secondItem="PoI-Kz-USp" secondAttribute="top" id="giH-1l-gcJ"/>
                     <constraint firstItem="Zmx-Ji-D0c" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" constant="20" symbolic="YES" id="iDt-18-Zup"/>
                     <constraint firstAttribute="bottom" secondItem="PoI-Kz-USp" secondAttribute="bottom" constant="20" symbolic="YES" id="oes-11-JHL"/>
                     <constraint firstItem="rX2-cQ-rFK" firstAttribute="top" secondItem="Zmx-Ji-D0c" secondAttribute="bottom" constant="20" symbolic="YES" id="tX8-84-jda"/>
                     <constraint firstItem="PoI-Kz-USp" firstAttribute="top" secondItem="rX2-cQ-rFK" secondAttribute="bottom" constant="8" symbolic="YES" id="u1M-yX-wxI"/>
+                    <constraint firstItem="KUT-Du-3AI" firstAttribute="firstBaseline" secondItem="gXS-kW-bGW" secondAttribute="firstBaseline" id="xjB-Lc-1VQ"/>
                 </constraints>
             </view>
-            <point key="canvasLocation" x="282" y="510"/>
+            <point key="canvasLocation" x="455" y="507.5"/>
         </window>
     </objects>
 </document>
