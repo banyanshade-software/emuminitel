@@ -5,6 +5,14 @@
  * @version 1.0
  */
 
+/* function minitelFromStr() will be redefined
+   by cocoa app
+ */
+
+function minitelFromStr(s)
+{
+     console.log("message: "+s);
+} 
 /**
  * @class MinitelEmulator
  */
@@ -72,7 +80,7 @@ class MinitelEmulator {
                 this.socket.send(message)
             }
             */
-            console.log("message: "+message);
+            minitelFromStr(message)
         }
 
         /**

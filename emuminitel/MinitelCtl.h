@@ -14,6 +14,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, weak) IBOutlet WKWebView *m1;
 
+- (IBAction) test1:(id)sender;
+- (IBAction) test2:(id)sender;
 
 
 @end

@@ -692,14 +692,14 @@
             <rect key="contentRect" x="335" y="390" width="1086" height="962"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1080"/>
             <view key="contentView" id="EiT-Mj-1SZ">
-                <rect key="frame" x="0.0" y="0.0" width="1086" height="832"/>
+                <rect key="frame" x="0.0" y="0.0" width="1086" height="884"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <wkWebView wantsLayer="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PoI-Kz-USp">
-                        <rect key="frame" x="20" y="20" width="640" height="792"/>
+                        <rect key="frame" x="20" y="20" width="644" height="795"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="792" id="ISP-rb-2o8"/>
-                            <constraint firstAttribute="width" constant="640" id="ilS-Sn-hZI"/>
+                            <constraint firstAttribute="height" constant="795" id="ISP-rb-2o8"/>
+                            <constraint firstAttribute="width" constant="644" id="ilS-Sn-hZI"/>
                         </constraints>
                         <wkWebViewConfiguration key="configuration">
                             <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
@@ -710,11 +710,41 @@
                             <outlet property="navigationDelegate" destination="OEM-lQ-5ov" id="KUu-j7-e45"/>
                         </connections>
                     </wkWebView>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Zmx-Ji-D0c">
+                        <rect key="frame" x="13" y="837" width="50" height="32"/>
+                        <buttonCell key="cell" type="push" title="T1" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="u0g-wz-6Au">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="test1:" target="OEM-lQ-5ov" id="tlP-9E-KhQ"/>
+                        </connections>
+                    </button>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="wgf-eC-C93">
+                        <rect key="frame" x="61" y="837" width="50" height="32"/>
+                        <buttonCell key="cell" type="push" title="T2" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="MbM-Ne-t6c">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="test2:" target="OEM-lQ-5ov" id="p5J-Da-S3A"/>
+                        </connections>
+                    </button>
+                    <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="rX2-cQ-rFK">
+                        <rect key="frame" x="20" y="821" width="644" height="5"/>
+                    </box>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="PoI-Kz-USp" firstAttribute="top" secondItem="EiT-Mj-1SZ" secondAttribute="top" constant="20" symbolic="YES" id="1sI-Ub-aIv"/>
+                    <constraint firstItem="wgf-eC-C93" firstAttribute="leading" secondItem="Zmx-Ji-D0c" secondAttribute="trailing" constant="12" symbolic="YES" id="0Ym-xe-97h"/>
+                    <constraint firstItem="PoI-Kz-USp" firstAttribute="leading" secondItem="rX2-cQ-rFK" secondAttribute="leading" id="3hT-jB-HXf"/>
+                    <constraint firstItem="wgf-eC-C93" firstAttribute="firstBaseline" secondItem="Zmx-Ji-D0c" secondAttribute="firstBaseline" id="9b5-3n-faP"/>
+                    <constraint firstItem="PoI-Kz-USp" firstAttribute="trailing" secondItem="rX2-cQ-rFK" secondAttribute="trailing" id="Vuh-Tr-8FJ"/>
                     <constraint firstItem="PoI-Kz-USp" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" constant="20" symbolic="YES" id="aMj-Ed-ohb"/>
+                    <constraint firstItem="Zmx-Ji-D0c" firstAttribute="top" secondItem="EiT-Mj-1SZ" secondAttribute="top" constant="20" symbolic="YES" id="c85-34-PP3"/>
+                    <constraint firstItem="Zmx-Ji-D0c" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" constant="20" symbolic="YES" id="iDt-18-Zup"/>
                     <constraint firstAttribute="bottom" secondItem="PoI-Kz-USp" secondAttribute="bottom" constant="20" symbolic="YES" id="oes-11-JHL"/>
+                    <constraint firstItem="rX2-cQ-rFK" firstAttribute="top" secondItem="Zmx-Ji-D0c" secondAttribute="bottom" constant="20" symbolic="YES" id="tX8-84-jda"/>
+                    <constraint firstItem="PoI-Kz-USp" firstAttribute="top" secondItem="rX2-cQ-rFK" secondAttribute="bottom" constant="8" symbolic="YES" id="u1M-yX-wxI"/>
                 </constraints>
             </view>
             <point key="canvasLocation" x="282" y="510"/>
