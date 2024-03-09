@@ -701,9 +701,9 @@
                             <constraint firstAttribute="height" constant="795" id="ISP-rb-2o8"/>
                             <constraint firstAttribute="width" constant="644" id="ilS-Sn-hZI"/>
                         </constraints>
-                        <wkWebViewConfiguration key="configuration">
+                        <wkWebViewConfiguration key="configuration" suppressesIncrementalRendering="YES">
                             <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
-                            <wkPreferences key="preferences"/>
+                            <wkPreferences key="preferences" javaScriptCanOpenWindowsAutomatically="NO"/>
                         </wkWebViewConfiguration>
                         <connections>
                             <outlet property="UIDelegate" destination="OEM-lQ-5ov" id="7ki-Vj-Zy1"/>
