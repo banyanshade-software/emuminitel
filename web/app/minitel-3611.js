@@ -33,7 +33,7 @@ function minitel(screenCanvasId, color, speed, keyboardId, bipId, webSocketURL) 
 
 let m = minitel(
     "minitel-screen",
-    false, // color
+    true, // color
     1200,
     "miedit",
     "minitel-bip",
