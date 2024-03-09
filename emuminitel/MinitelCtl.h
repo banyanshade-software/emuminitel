@@ -16,6 +16,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (IBAction) test1:(id)sender;
 - (IBAction) test2:(id)sender;
+- (IBAction) test3:(id)sender;
+- (IBAction) test4:(id)sender;
 
 
 @end
