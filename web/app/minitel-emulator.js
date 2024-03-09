@@ -63,7 +63,7 @@ class MinitelEmulator {
             */
         } else {
             this.pageMemory.setStatusCharacter(0x4C)
-            console.log("hop\n");
+            //console.log("hop\n");
         }
 
         const sender = message => {
@@ -160,7 +160,7 @@ class MinitelEmulator {
      * @param {number[]} items Values to send
      */
     send(items) {
-        console.log("send"+items)
+        //console.log("send"+items)
         this.queue = this.queue.concat(items)
     }
 
@@ -191,10 +191,10 @@ class MinitelEmulator {
         // Nothing to do?
         if(this.queue.length === 0) return
 
-        console.log("sendChunk queue"+this.queue)
+        //console.log("sendChunk queue"+this.queue)
         const chunk = this.queue.slice(0, this.chunkSize)
         this.queue = this.queue.slice(this.chunkSize)
-        console.log("sendChunk next queuelen "+this.queue.length)
+        //console.log("sendChunk next queuelen "+this.queue.length)
         this.decoder.decodeList(chunk)
     }
 

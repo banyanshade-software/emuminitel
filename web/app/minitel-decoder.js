@@ -916,13 +916,13 @@ class MinitelDecoder {
      * @private
      */
     decode(char) {
-        console.log("decode "+ char.length + " first " +char.charCodeAt(0))
+        //console.log("decode "+ char.length + " first " +char.charCodeAt(0))
         // Get the ordinal value of the character
         const c = char.charCodeAt(0)
 
         // NUL character is always ignored, whenever it happens
         if(c == 0x00) {
-            console.log("nil")
+            //console.log("nil")
             return
         }
 
@@ -939,7 +939,7 @@ class MinitelDecoder {
 
         // Look for an action for the character to execute
         let action = null
-        console.log("state "+this.state)
+        //console.log("state "+this.state)
         if(c in Minitel.states[this.state]) {
             // Found an action for this specific character
             action = Minitel.states[this.state][c]
@@ -964,7 +964,7 @@ class MinitelDecoder {
             console.log("Error: developer forgot to write " + action.func)
         } else if("func" in action) {
             // The action has a function ready to be executed
-            console.log("func:"+action.func)
+            //console.log("func:"+action.func)
             let args = []
             if("arg" in action) {
                 // The function has predefined arguments
@@ -995,14 +995,14 @@ class MinitelDecoder {
      *                      iterable containing numbers
      */
     decodeList(items) {
-        console.log("decode list"+items)
+        //console.log("decode list"+items)
         if(typeof items === "string" || items instanceof String) {
-            console.log("decode sring")
+            //console.log("decode sring")
             // Items are a string of an instance of a String
             range(items.length).forEach(i => this.decode(items[i]))
         } else {
             // Items are iterable
-            console.log("decode iterable"+items.length)
+            //console.log("decode iterable"+items.length)
             range(items.length).forEach(i =>
                 this.decode(String.fromCharCode(items[i]))
             )

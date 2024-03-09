@@ -40,17 +40,22 @@ let m = minitel(
     null // "ws://3611.re/ws"
 )
 
-function sendString(str) {
+function minitelSendString(str) {
     range(str.length).forEach(offset => {
        m.send(str[offset].charCodeAt(0))
    })
 }
 
-function sendChar(str) {
-    m.send(str.charCodeAt(0))
+function minitelSendChar(c) {
+    m.send(c.charCodeAt(0))
 }
 
-console.log("m="+m)
+function minitelSetStatusChar(c)
+{
+    m.pageMemory.setStatusCharacter(c.charCodeAt(0));
+}
+
+//console.log("m="+m)
 //m.directSend("hello")
 /*m.send(0x44)
 m.send(0x45)
@@ -59,11 +64,12 @@ m.send(0x47)
 m.send(0x48)
 m.send(0x49)
 m.send(0x4A)*/
-sendChar("A")
-sendChar("B")
-sendChar("C")
-sendString("hello world")
-sendString("hello world")
-m.pageMemory.forceRedraw()
-m.pageMemory.render()
+minitelSendChar("A")
+minitelSendChar("B")
+minitelSendChar("C")
+minitelSetStatusChar("X")
+minitelSendString("hello world")
+minitelSendString("hello world")
+//m.pageMemory.forceRedraw()
+//m.pageMemory.render()
 //m.send(["H", "e", "l", "l", "o", " ", "w", "o", "r", 'd'])
