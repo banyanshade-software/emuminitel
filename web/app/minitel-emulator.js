@@ -13,6 +13,10 @@ function minitelFromStr(s)
 {
      console.log("message: "+s);
 } 
+function minitelFromDone()
+{
+    console.log("fromdone");
+}
 /**
  * @class MinitelEmulator
  */
@@ -204,6 +208,9 @@ class MinitelEmulator {
         this.queue = this.queue.slice(this.chunkSize)
         //console.log("sendChunk next queuelen "+this.queue.length)
         this.decoder.decodeList(chunk)
+        if (this.queue.length == 0) {
+            minitelFromDone()
+        }
     }
 
     /**

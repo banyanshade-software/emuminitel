@@ -11,30 +11,10 @@
 		1B04E9DD2B9B8EF800BBB9D8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1B04E9DC2B9B8EF800BBB9D8 /* Assets.xcassets */; };
 		1B04E9E02B9B8EF800BBB9D8 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B04E9DE2B9B8EF800BBB9D8 /* MainMenu.xib */; };
 		1B04E9E22B9B8EF800BBB9D8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B04E9E12B9B8EF800BBB9D8 /* main.m */; };
-		1B04E9ED2B9B8EF800BBB9D8 /* emuminitelTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B04E9EC2B9B8EF800BBB9D8 /* emuminitelTests.m */; };
-		1B04E9F72B9B8EF800BBB9D8 /* emuminitelUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B04E9F62B9B8EF800BBB9D8 /* emuminitelUITests.m */; };
-		1B04E9F92B9B8EF800BBB9D8 /* emuminitelUITestsLaunchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B04E9F82B9B8EF800BBB9D8 /* emuminitelUITestsLaunchTests.m */; };
 		1B04EA092B9B911A00BBB9D8 /* MinitelCtl.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B04EA082B9B911A00BBB9D8 /* MinitelCtl.m */; };
 		1B04EA0F2B9B9E4100BBB9D8 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B04EA0E2B9B9E4100BBB9D8 /* WebKit.framework */; };
 		1B04EA1C2B9BA2C000BBB9D8 /* web in Resources */ = {isa = PBXBuildFile; fileRef = 1B04EA0A2B9B974700BBB9D8 /* web */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		1B04E9E92B9B8EF800BBB9D8 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 1B04E9CE2B9B8EF500BBB9D8 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 1B04E9D52B9B8EF500BBB9D8;
-			remoteInfo = emuminitel;
-		};
-		1B04E9F32B9B8EF800BBB9D8 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 1B04E9CE2B9B8EF500BBB9D8 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 1B04E9D52B9B8EF500BBB9D8;
-			remoteInfo = emuminitel;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		1B04E9D62B9B8EF500BBB9D8 /* emuminitel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = emuminitel.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -44,9 +24,7 @@
 		1B04E9DF2B9B8EF800BBB9D8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		1B04E9E12B9B8EF800BBB9D8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1B04E9E32B9B8EF800BBB9D8 /* emuminitel.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = emuminitel.entitlements; sourceTree = "<group>"; };
-		1B04E9E82B9B8EF800BBB9D8 /* emuminitelTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = emuminitelTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B04E9EC2B9B8EF800BBB9D8 /* emuminitelTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = emuminitelTests.m; sourceTree = "<group>"; };
-		1B04E9F22B9B8EF800BBB9D8 /* emuminitelUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = emuminitelUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B04E9F62B9B8EF800BBB9D8 /* emuminitelUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = emuminitelUITests.m; sourceTree = "<group>"; };
 		1B04E9F82B9B8EF800BBB9D8 /* emuminitelUITestsLaunchTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = emuminitelUITestsLaunchTests.m; sourceTree = "<group>"; };
 		1B04EA072B9B911A00BBB9D8 /* MinitelCtl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MinitelCtl.h; sourceTree = "<group>"; };
@@ -68,20 +46,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				1B04EA0F2B9B9E4100BBB9D8 /* WebKit.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		1B04E9E52B9B8EF800BBB9D8 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		1B04E9EF2B9B8EF800BBB9D8 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -109,8 +73,6 @@
 			isa = PBXGroup;
 			children = (
 				1B04E9D62B9B8EF500BBB9D8 /* emuminitel.app */,
-				1B04E9E82B9B8EF800BBB9D8 /* emuminitelTests.xctest */,
-				1B04E9F22B9B8EF800BBB9D8 /* emuminitelUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -177,42 +139,6 @@
 			productReference = 1B04E9D62B9B8EF500BBB9D8 /* emuminitel.app */;
 			productType = "com.apple.product-type.application";
 		};
-		1B04E9E72B9B8EF800BBB9D8 /* emuminitelTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 1B04E9FF2B9B8EF800BBB9D8 /* Build configuration list for PBXNativeTarget "emuminitelTests" */;
-			buildPhases = (
-				1B04E9E42B9B8EF800BBB9D8 /* Sources */,
-				1B04E9E52B9B8EF800BBB9D8 /* Frameworks */,
-				1B04E9E62B9B8EF800BBB9D8 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				1B04E9EA2B9B8EF800BBB9D8 /* PBXTargetDependency */,
-			);
-			name = emuminitelTests;
-			productName = emuminitelTests;
-			productReference = 1B04E9E82B9B8EF800BBB9D8 /* emuminitelTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		1B04E9F12B9B8EF800BBB9D8 /* emuminitelUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 1B04EA022B9B8EF800BBB9D8 /* Build configuration list for PBXNativeTarget "emuminitelUITests" */;
-			buildPhases = (
-				1B04E9EE2B9B8EF800BBB9D8 /* Sources */,
-				1B04E9EF2B9B8EF800BBB9D8 /* Frameworks */,
-				1B04E9F02B9B8EF800BBB9D8 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				1B04E9F42B9B8EF800BBB9D8 /* PBXTargetDependency */,
-			);
-			name = emuminitelUITests;
-			productName = emuminitelUITests;
-			productReference = 1B04E9F22B9B8EF800BBB9D8 /* emuminitelUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -224,14 +150,6 @@
 				TargetAttributes = {
 					1B04E9D52B9B8EF500BBB9D8 = {
 						CreatedOnToolsVersion = 13.4.1;
-					};
-					1B04E9E72B9B8EF800BBB9D8 = {
-						CreatedOnToolsVersion = 13.4.1;
-						TestTargetID = 1B04E9D52B9B8EF500BBB9D8;
-					};
-					1B04E9F12B9B8EF800BBB9D8 = {
-						CreatedOnToolsVersion = 13.4.1;
-						TestTargetID = 1B04E9D52B9B8EF500BBB9D8;
 					};
 				};
 			};
@@ -249,8 +167,6 @@
 			projectRoot = "";
 			targets = (
 				1B04E9D52B9B8EF500BBB9D8 /* emuminitel */,
-				1B04E9E72B9B8EF800BBB9D8 /* emuminitelTests */,
-				1B04E9F12B9B8EF800BBB9D8 /* emuminitelUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -263,20 +179,6 @@
 				1B04E9DD2B9B8EF800BBB9D8 /* Assets.xcassets in Resources */,
 				1B04E9E02B9B8EF800BBB9D8 /* MainMenu.xib in Resources */,
 				1B04EA1C2B9BA2C000BBB9D8 /* web in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		1B04E9E62B9B8EF800BBB9D8 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		1B04E9F02B9B8EF800BBB9D8 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -293,37 +195,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		1B04E9E42B9B8EF800BBB9D8 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				1B04E9ED2B9B8EF800BBB9D8 /* emuminitelTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		1B04E9EE2B9B8EF800BBB9D8 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				1B04E9F72B9B8EF800BBB9D8 /* emuminitelUITests.m in Sources */,
-				1B04E9F92B9B8EF800BBB9D8 /* emuminitelUITestsLaunchTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		1B04E9EA2B9B8EF800BBB9D8 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 1B04E9D52B9B8EF500BBB9D8 /* emuminitel */;
-			targetProxy = 1B04E9E92B9B8EF800BBB9D8 /* PBXContainerItemProxy */;
-		};
-		1B04E9F42B9B8EF800BBB9D8 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 1B04E9D52B9B8EF500BBB9D8 /* emuminitel */;
-			targetProxy = 1B04E9F32B9B8EF800BBB9D8 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		1B04E9DE2B9B8EF800BBB9D8 /* MainMenu.xib */ = {
@@ -502,66 +374,6 @@
 			};
 			name = Release;
 		};
-		1B04EA002B9B8EF800BBB9D8 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 12.3;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.banyanshade-software.emuminitelTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/emuminitel.app/Contents/MacOS/emuminitel";
-			};
-			name = Debug;
-		};
-		1B04EA012B9B8EF800BBB9D8 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 12.3;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.banyanshade-software.emuminitelTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/emuminitel.app/Contents/MacOS/emuminitel";
-			};
-			name = Release;
-		};
-		1B04EA032B9B8EF800BBB9D8 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.banyanshade-software.emuminitelUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				TEST_TARGET_NAME = emuminitel;
-			};
-			name = Debug;
-		};
-		1B04EA042B9B8EF800BBB9D8 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.banyanshade-software.emuminitelUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				TEST_TARGET_NAME = emuminitel;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -579,24 +391,6 @@
 			buildConfigurations = (
 				1B04E9FD2B9B8EF800BBB9D8 /* Debug */,
 				1B04E9FE2B9B8EF800BBB9D8 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		1B04E9FF2B9B8EF800BBB9D8 /* Build configuration list for PBXNativeTarget "emuminitelTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				1B04EA002B9B8EF800BBB9D8 /* Debug */,
-				1B04EA012B9B8EF800BBB9D8 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		1B04EA022B9B8EF800BBB9D8 /* Build configuration list for PBXNativeTarget "emuminitelUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				1B04EA032B9B8EF800BBB9D8 /* Debug */,
-				1B04EA042B9B8EF800BBB9D8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

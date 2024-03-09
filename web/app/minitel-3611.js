@@ -46,6 +46,12 @@ function minitelSendString(str) {
    })
 }
 
+function minitelSendBytes(str) {
+    range(str.length).forEach(offset => {
+       m.send(str[offset])
+   })
+}
+
 function minitelSendChar(c) {
     m.send(c.charCodeAt(0))
 }
@@ -70,8 +76,8 @@ minitelSendChar("B")
 minitelSendChar("C")
 minitelSetStatusChar("X")
 minitelSendString("hello world")
-minitelSendString("hello world")
 */
+minitelSendString("hello world")
 m.pageMemory.forceRedraw()
 //m.pageMemory.render()
 //m.send(["H", "e", "l", "l", "o", " ", "w", "o", "r", 'd'])

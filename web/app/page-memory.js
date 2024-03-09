@@ -373,6 +373,7 @@ class PageMemory {
                 if(this.lastBlink === blink) return
             }
 
+            //console.log("render changed "+ row)
             this.changed[row] = false
 
             let blinkRow = this.drawRow(this.memory[row], row, blink)
