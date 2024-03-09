@@ -1,0 +1,12 @@
+/Users/danielbraun/devel/minitel/emuminitel/src/serial/../utils/itm_debug.h:61:20:itm_debug1	2
+/Users/danielbraun/devel/minitel/emuminitel/src/serial/../utils/itm_debug.h:65:20:itm_debug2	2
+/Users/danielbraun/devel/minitel/emuminitel/src/serial/../utils/itm_debug.h:69:20:itm_debug3	2
+/Users/danielbraun/devel/minitel/emuminitel/src/serial/serial.c:54:5:serial_start_rx	2
+/Users/danielbraun/devel/minitel/emuminitel/src/serial/serial.c:67:6:serial_send_bytes	5
+/Users/danielbraun/devel/minitel/emuminitel/src/serial/serial.c:98:6:HAL_UART_TxCpltCallback	6
+/Users/danielbraun/devel/minitel/emuminitel/src/serial/serial.c:125:13:bh	1
+/Users/danielbraun/devel/minitel/emuminitel/src/serial/serial.c:130:6:HAL_UARTEx_RxFifoFullCallback	1
+/Users/danielbraun/devel/minitel/emuminitel/src/serial/serial.c:135:6:HAL_UART_RxHalfCpltCallback	1
+/Users/danielbraun/devel/minitel/emuminitel/src/serial/serial.c:140:6:HAL_UART_RxCpltCallback	6
+/Users/danielbraun/devel/minitel/emuminitel/src/serial/serial.c:170:6:HAL_UARTEx_RxEventCallback	1
+/Users/danielbraun/devel/minitel/emuminitel/src/serial/serial.c:175:6:HAL_UART_ErrorCallback	5

@@ -1,0 +1,7 @@
+/Users/danielbraun/devel/minitel/emuminitel/src/utils/itm_debug.h:61:20:itm_debug1	2
+/Users/danielbraun/devel/minitel/emuminitel/src/utils/lf_mqueue.c:21:6:mqf_clear	1
+/Users/danielbraun/devel/minitel/emuminitel/src/utils/lf_mqueue.c:29:19:_mqf_len	3
+/Users/danielbraun/devel/minitel/emuminitel/src/utils/lf_mqueue.c:43:5:mqf_len	1
+/Users/danielbraun/devel/minitel/emuminitel/src/utils/lf_mqueue.c:51:6:mqf_qfull	3
+/Users/danielbraun/devel/minitel/emuminitel/src/utils/lf_mqueue.c:64:5:mqf_write	7
+/Users/danielbraun/devel/minitel/emuminitel/src/utils/lf_mqueue.c:92:5:mqf_read	4
