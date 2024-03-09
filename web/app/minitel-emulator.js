@@ -43,6 +43,7 @@ class MinitelEmulator {
         this.socket = null
 
         if (socket !== null) {
+            /*
             socket.onopen = openEvent => {
                 this.socket = socket
 
@@ -59,14 +60,19 @@ class MinitelEmulator {
             socket.onclose = closeEvent => {
                 this.pageMemory.setStatusCharacter(0x46)
             }
+            */
         } else {
             this.pageMemory.setStatusCharacter(0x4C)
+            console.log("hop\n");
         }
 
         const sender = message => {
+            /*
             if(this.socket !== null) {
                 this.socket.send(message)
             }
+            */
+            console.log("message: "+message);
         }
 
         /**
@@ -77,7 +83,7 @@ class MinitelEmulator {
         this.decoder = new MinitelDecoder(
             this.pageMemory,
             keyboard,
-            socket !== null ? sender : null,
+            sender, //socket !== null ? sender : null,
             bip
         )
 
@@ -154,6 +160,7 @@ class MinitelEmulator {
      * @param {number[]} items Values to send
      */
     send(items) {
+        console.log("send"+items)
         this.queue = this.queue.concat(items)
     }
 
@@ -184,8 +191,10 @@ class MinitelEmulator {
         // Nothing to do?
         if(this.queue.length === 0) return
 
+        console.log("sendChunk queue"+this.queue)
         const chunk = this.queue.slice(0, this.chunkSize)
         this.queue = this.queue.slice(this.chunkSize)
+        console.log("sendChunk next queuelen "+this.queue.length)
         this.decoder.decodeList(chunk)
     }
 

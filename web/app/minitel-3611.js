@@ -26,15 +26,44 @@ function minitel(screenCanvasId, color, speed, keyboardId, bipId, webSocketURL) 
        const keyboard = new Keyboard(document.getElementById(keyboardId))
        const bip = document.getElementById(bipId)
 
-       new MinitelEmulator(canvas, keyboard, socket, bip).setColor(color)
+       let m = new MinitelEmulator(canvas, keyboard, socket, bip).setColor(color)
                                                               .setRefresh(speed)
+        return m
 }
 
-minitel(
+let m = minitel(
     "minitel-screen",
-    true,
+    false, // color
     1200,
     "miedit",
     "minitel-bip",
     null // "ws://3611.re/ws"
 )
+
+function sendString(str) {
+    range(str.length).forEach(offset => {
+       m.send(str[offset].charCodeAt(0))
+   })
+}
+
+function sendChar(str) {
+    m.send(str.charCodeAt(0))
+}
+
+console.log("m="+m)
+//m.directSend("hello")
+/*m.send(0x44)
+m.send(0x45)
+m.send(0x46)
+m.send(0x47)
+m.send(0x48)
+m.send(0x49)
+m.send(0x4A)*/
+sendChar("A")
+sendChar("B")
+sendChar("C")
+sendString("hello world")
+sendString("hello world")
+m.pageMemory.forceRedraw()
+m.pageMemory.render()
+//m.send(["H", "e", "l", "l", "o", " ", "w", "o", "r", 'd'])
