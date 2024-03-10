@@ -11,11 +11,10 @@
 
 extern uint32_t debug_flags;
 
-#define DBG_COM  	(1UL<<0)
-#define DBG_BLE		(1UL<<1)
-#define DBG_SERIAL	(1UL<<2)
-#define DBG_MSG  	(1UL<<3)
-#define DBG_MTEL  	(1UL<<4)
+
+#define DBG_SERIAL	(1UL<<1)
+#define DBG_MSG  	(1UL<<2)
+#define DBG_MTEL  	(1UL<<3)
 /*
 #define DBG_PID		(1UL<<2)
 #define DBG_INERTIA	(1UL<<3)

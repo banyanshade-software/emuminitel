@@ -22,6 +22,9 @@
 int serial_start_rx(int port);
 
 int serial_send_bytes(int port, const uint8_t *b, int len, int needcopy);
+int serial_tx_onprogress(int port);
+
+
 
 
 #define _NOTIF_UART_RX		0x00000001

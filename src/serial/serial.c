@@ -10,6 +10,7 @@
 #include <string.h>
 #include "serial.h"
 
+#include "serial.h"
 #include "../utils/misc.h"
 #include "main.h"
 #include "../utils/itm_debug.h"
@@ -93,6 +94,12 @@ int serial_start_rx(int port)
 	}
 	return 0;
 }
+
+ int serial_tx_onprogress(int port)
+ {
+		serial_t *s = &serials[port];
+		return (s->txonprogress) ? 1 : 0;
+ }
 
 //void HAL_UART_TxHalfCpltCallback(UART_HandleTypeDef *huart);
 void HAL_UART_TxCpltCallback(_UNUSED_ UART_HandleTypeDef *huart)
