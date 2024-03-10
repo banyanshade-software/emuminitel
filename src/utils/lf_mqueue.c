@@ -46,7 +46,9 @@ int mqf_len(const mqf_t *m)
 }
 
 
-void dump_msg(mqf_t *mq, int n);
+__weak void dump_msg(mqf_t *mq, int n)
+{
+}
 
 void mqf_qfull(mqf_t *mq, _UNUSED_ int t)
 {
