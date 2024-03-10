@@ -11,6 +11,7 @@ RM := rm -rf
 -include sources.mk
 -include src/utils/subdir.mk
 -include src/serial/subdir.mk
+-include src/app/subdir.mk
 -include Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/subdir.mk
 -include Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/subdir.mk
 -include Middlewares/Third_Party/FreeRTOS/Source/subdir.mk

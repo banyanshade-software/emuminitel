@@ -33,6 +33,8 @@
 "./Middlewares/Third_Party/FreeRTOS/Source/tasks.o"
 "./Middlewares/Third_Party/FreeRTOS/Source/timers.o"
 "./Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/port.o"
+"./src/app/minitels.o"
+"./src/app/miniteltask.o"
 "./src/serial/serial.o"
 "./src/utils/itm_debug.o"
 "./src/utils/lf_mqueue.o"
