@@ -19,12 +19,12 @@
                 <outlet property="m1" destination="Fca-of-h5i" id="UOk-Gb-Y8T"/>
             </connections>
         </customObject>
-        <customObject id="OEM-lQ-5ov" customClass="MinitelCtl">
+        <customObject id="OEM-lQ-5ov" userLabel="Minitel Ctl1" customClass="MinitelCtl">
             <connections>
                 <outlet property="m1" destination="PoI-Kz-USp" id="chC-pY-xkX"/>
             </connections>
         </customObject>
-        <customObject id="Fca-of-h5i" customClass="MinitelCtl">
+        <customObject id="Fca-of-h5i" userLabel="Minitel Ctl2" customClass="MinitelCtl">
             <connections>
                 <outlet property="m1" destination="Riz-NX-07g" id="mQn-W3-Jrj"/>
             </connections>
@@ -779,16 +779,39 @@
                             <action selector="test4:" target="OEM-lQ-5ov" id="pKj-Ud-ccZ"/>
                         </connections>
                     </button>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="NLI-bM-MFj">
+                        <rect key="frame" x="617" y="837" width="54" height="32"/>
+                        <buttonCell key="cell" type="push" title="ON" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="3wz-LN-07q">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <binding destination="OEM-lQ-5ov" name="value" keyPath="replyToId" id="qgB-SY-PYV"/>
+                        </connections>
+                    </button>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="OXh-Pl-SJZ">
+                        <rect key="frame" x="1277" y="837" width="54" height="32"/>
+                        <buttonCell key="cell" type="push" title="ON" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Obc-Y9-2ci">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <binding destination="Fca-of-h5i" name="value" keyPath="replyToId" id="yOC-mP-RVu"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="wgf-eC-C93" firstAttribute="leading" secondItem="Zmx-Ji-D0c" secondAttribute="trailing" constant="12" symbolic="YES" id="0Ym-xe-97h"/>
+                    <constraint firstItem="NLI-bM-MFj" firstAttribute="firstBaseline" secondItem="KUT-Du-3AI" secondAttribute="firstBaseline" id="2le-3f-0Rm"/>
                     <constraint firstItem="PoI-Kz-USp" firstAttribute="leading" secondItem="rX2-cQ-rFK" secondAttribute="leading" id="3hT-jB-HXf"/>
                     <constraint firstItem="gXS-kW-bGW" firstAttribute="leading" secondItem="wgf-eC-C93" secondAttribute="trailing" constant="12" symbolic="YES" id="4wQ-yd-a94"/>
+                    <constraint firstItem="NLI-bM-MFj" firstAttribute="trailing" secondItem="PoI-Kz-USp" secondAttribute="trailing" id="4wu-V4-ScM"/>
                     <constraint firstItem="Riz-NX-07g" firstAttribute="leading" secondItem="PoI-Kz-USp" secondAttribute="trailing" constant="16" id="69E-1s-ggj"/>
                     <constraint firstItem="wgf-eC-C93" firstAttribute="firstBaseline" secondItem="Zmx-Ji-D0c" secondAttribute="firstBaseline" id="9b5-3n-faP"/>
                     <constraint firstItem="KUT-Du-3AI" firstAttribute="leading" secondItem="gXS-kW-bGW" secondAttribute="trailing" constant="12" symbolic="YES" id="BDY-mb-9xc"/>
                     <constraint firstItem="gXS-kW-bGW" firstAttribute="firstBaseline" secondItem="wgf-eC-C93" secondAttribute="firstBaseline" id="DIM-gG-g2v"/>
                     <constraint firstAttribute="trailing" secondItem="Riz-NX-07g" secondAttribute="trailing" constant="20" symbolic="YES" id="Dxm-7b-QtZ"/>
+                    <constraint firstItem="OXh-Pl-SJZ" firstAttribute="trailing" secondItem="Riz-NX-07g" secondAttribute="trailing" id="Grn-oF-4ey"/>
                     <constraint firstItem="PoI-Kz-USp" firstAttribute="trailing" secondItem="rX2-cQ-rFK" secondAttribute="trailing" id="Vuh-Tr-8FJ"/>
                     <constraint firstItem="PoI-Kz-USp" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" constant="20" symbolic="YES" id="aMj-Ed-ohb"/>
                     <constraint firstItem="Zmx-Ji-D0c" firstAttribute="top" secondItem="EiT-Mj-1SZ" secondAttribute="top" constant="20" symbolic="YES" id="c85-34-PP3"/>
@@ -798,9 +821,10 @@
                     <constraint firstItem="rX2-cQ-rFK" firstAttribute="top" secondItem="Zmx-Ji-D0c" secondAttribute="bottom" constant="20" symbolic="YES" id="tX8-84-jda"/>
                     <constraint firstItem="PoI-Kz-USp" firstAttribute="top" secondItem="rX2-cQ-rFK" secondAttribute="bottom" constant="8" symbolic="YES" id="u1M-yX-wxI"/>
                     <constraint firstItem="KUT-Du-3AI" firstAttribute="firstBaseline" secondItem="gXS-kW-bGW" secondAttribute="firstBaseline" id="xjB-Lc-1VQ"/>
+                    <constraint firstItem="OXh-Pl-SJZ" firstAttribute="firstBaseline" secondItem="NLI-bM-MFj" secondAttribute="firstBaseline" id="zM2-cA-OFB"/>
                 </constraints>
             </view>
-            <point key="canvasLocation" x="455" y="507.5"/>
+            <point key="canvasLocation" x="-30" y="206"/>
         </window>
     </objects>
 </document>

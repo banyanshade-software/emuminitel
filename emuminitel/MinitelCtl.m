@@ -89,6 +89,10 @@
     if ((len == 3) && (bytes[0] == 0x1B)
                    && (bytes[1]==0x39)
                    && (bytes[2] == 0x7B)) {
+        if (!_replyToId) {
+            minitel_tx_done(_portNum);
+            return;
+        }
         minitel_tx_done(_portNum);
         //POR1 identification
         minitel_rx_char(_portNum, 0x01);
@@ -96,6 +100,7 @@
         minitel_rx_char(_portNum, 0x75); // M1B
         minitel_rx_char(_portNum, 0x01); //version
         minitel_rx_char(_portNum, 0x04);
+        return;
     }
     self.txOnProgress = YES;
     [_m1 evaluateJavaScript:s completionHandler:^(id v, NSError *err) {

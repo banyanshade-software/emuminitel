@@ -25,6 +25,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic) int portNum;
 @property (nonatomic) BOOL txOnProgress;
 @property (nonatomic) BOOL canRx;
+@property (nonatomic) BOOL replyToId;
 
 
 - (void) sendBytesToMinitel:(const uint8_t *)bytes length:(int)len;
