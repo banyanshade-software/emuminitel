@@ -25,13 +25,17 @@
 
 #define NUM_MINITELS NUM_SERIALS
 
+extern osThreadId mainTaskHandle;
+
 
 
 void StartMainTask(void const * argument)
 {
 	minitel_init_all();
-
-  /* Infinite loop */
+	for (int i=0; i<NUM_SERIALS; i++) {
+		serials[i].taskHandle = mainTaskHandle;
+	}
+	/* Infinite loop */
 	for (;;) {
 		itm_debug1(DBG_MTEL, "-wait c", 0);
 		uint32_t notif = 0;
