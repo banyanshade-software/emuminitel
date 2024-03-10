@@ -82,6 +82,21 @@
     for (int i=0; i<len; i++) {
         [s appendFormat:@"0x%2.2X%s", bytes[i], (i<len-1) ? ", " : "]);"];
     }
+    // minitel js emul does not handle PRO1 command, handle it here
+    // we should theorically handle it byte per byte, but we know stm32 code will send the whole command
+    // at once
+    // for now we only handle minitel identification
+    if ((len == 3) && (bytes[0] == 0x1B)
+                   && (bytes[1]==0x39)
+                   && (bytes[2] == 0x7B)) {
+        minitel_tx_done(_portNum);
+        //POR1 identification
+        minitel_rx_char(_portNum, 0x01);
+        minitel_rx_char(_portNum, 0x43); // constructeur telic
+        minitel_rx_char(_portNum, 0x75); // M1B
+        minitel_rx_char(_portNum, 0x01); //version
+        minitel_rx_char(_portNum, 0x04);
+    }
     self.txOnProgress = YES;
     [_m1 evaluateJavaScript:s completionHandler:^(id v, NSError *err) {
         if (err) {
