@@ -10,13 +10,9 @@
 
 #include "../utils/misc.h"
 #include "../utils/lf_mqueue.h"
-#include "main.h"
-
-#define PORT_VCOM 	0
-#define PORT_BLE	1
 
 
-//int serial_setup(int port, osThreadId task);
+
 
 
 int serial_start_rx(int port);
@@ -26,6 +22,8 @@ int serial_tx_onprogress(int port);
 
 
 
+#define NUM_SERIALS 4
+
 
 #define _NOTIF_UART_RX		0x00000001
 #define _NOTIF_UART_TX		0x00000010
@@ -34,6 +32,7 @@ int serial_tx_onprogress(int port);
 #define NOTIFY_UART_TX(_p) (_NOTIF_UART_TX<<(_p))
 
 typedef struct serial {
+#ifndef MINITEL_SIMULATOR
 	osThreadId          taskHandle;
 	UART_HandleTypeDef *uart;
 	DMA_HandleTypeDef  *txdma;
@@ -42,10 +41,11 @@ typedef struct serial {
 	uint8_t            *txbuf;
 	volatile uint8_t    txonprogress;
 	uint8_t				rxcar;
+#endif //MINITEL_SIMULATOR
+
 	mqf_t				*rxqueue;
 } serial_t;
 
-#define NUM_SERIALS 4
 
 
 extern serial_t serials[NUM_SERIALS];

@@ -54,6 +54,7 @@ void minitel_processtxdone(int mntidx)
 		break;
 	case state_init:
 	case state_q1:
+            break;
 	}
 }
 

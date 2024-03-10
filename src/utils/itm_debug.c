@@ -12,14 +12,17 @@
 #include <stdint.h>
 #include <memory.h>
 #include <stdlib.h>
-
-
-#include "cmsis_os.h"
-
-
-#include "itm_debug.h"
 #include "misc.h"
-#include "main.h"
+#include "itm_debug.h"
+
+
+#ifndef MINITEL_SIMULATOR
+#include "cmsis_os.h"
+#endif //MINITEL_SIMULATOR
+
+
+
+
 
 
 
@@ -29,7 +32,7 @@ uint32_t debug_flags = DBG_ERR| DBG_MTEL | DBG_SERIAL ;
 
 
 #define DBG_
-#ifdef TRAIN_SIMU
+#ifdef MINITEL_SIMULATOR
 char* itoa ( int32_t  value,  char str[],  int radix)
 {
     char        buf [66];
@@ -103,7 +106,7 @@ static void write_num(char *buf, uint32_t v, int ndigit)
 	}
 }
 #if 0
-#ifndef TRAIN_SIMU
+#ifndef MINITEL_SIMULATOR
 int _write(_UNUSED_ int32_t file, uint8_t *ptr, int32_t len)
 {
 	for (int i = 0; i < len; i++)
@@ -117,7 +120,7 @@ int _write(_UNUSED_ int32_t file, uint8_t *ptr, int32_t len)
 
 static inline void mywrite(const char *ptr, int32_t len)
 {
-#ifndef TRAIN_SIMU
+#ifndef MINITEL_SIMULATOR
 	for (int i = 0; i < len; i++)
 	{
 		ITM_SendChar(*ptr++);

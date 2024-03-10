@@ -8,8 +8,18 @@
 #ifndef MISC_H_
 #define MISC_H_
 
+
+#ifdef __APPLE__
+#define MINITEL_SIMULATOR
+#endif
+
+#ifndef MINITEL_SIMULATOR
 #include "cmsis_os.h"
 #include "main.h"
+#else //MINITEL_SIMULATOR
+#include <stdlib.h>
+#endif //MINITEL_SIMULATOR
+
 
 void flash_led(void);
 
@@ -43,8 +53,10 @@ static inline int signof0(int v)
 // useful everywhere for profiling and logging, even
 // in files that do not need to include HAL
 
-uint32_t HAL_GetTick(void);
 
+#ifndef MINITEL_SIMULATOR
+
+uint32_t HAL_GetTick(void);
 
 static inline uint32_t GetCurrentMicro(void)
 {
@@ -61,6 +73,20 @@ static inline uint32_t GetCurrentMicro(void)
     return ( m0 * 1000 + (u0 * 1000) / SysTick->LOAD);
   }
 }
+
+
+
+#else //MINITEL_SIMULATOR
+static inline uint32_t HAL_GetTick(void)
+{
+    extern uint32_t SimuTick;
+    return SimuTick;
+}
+static inline uint32_t GetCurrentMicro(void)
+{
+    return 0;
+}
+#endif //MINITEL_SIMULATOR
 
 
 //

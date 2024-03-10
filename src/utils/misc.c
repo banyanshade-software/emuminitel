@@ -8,10 +8,17 @@
 
 #include <stdint.h>
 #include "misc.h"
-#include "main.h"
 
+#ifndef MINITEL_SIMULATOR
 #include "stm32g4xx_hal.h"
 //#include "cmsis_os.h"
+#endif //MINITEL_SIMULATOR
+
+
+
+#ifndef MINITEL_SIMULATOR
+#endif //MINITEL_SIMULATOR
+
 
 void flash_led(void)
 {
@@ -38,6 +45,15 @@ void flash_led(void)
 #endif /* TRAIN_SIMU */
 }
 
+
+#ifndef MINITEL_SIMULATOR
+#else //MINITEL_SIMULATOR
+#endif //MINITEL_SIMULATOR
+
+
+
+#ifndef MINITEL_SIMULATOR
+
 static const char *_fatal = NULL;
 void FatalError(const char *short4lettersmsg, _UNUSED_ const char *longmsg)
 {
@@ -50,4 +66,12 @@ void FatalError(const char *short4lettersmsg, _UNUSED_ const char *longmsg)
 		}
 	}
 }
+
+#else //MINITEL_SIMULATOR
+
+void FatalError(const char *short4lettersmsg, _UNUSED_ const char *longmsg)
+{
+    abort();
+}
+#endif //MINITEL_SIMULATOR
 

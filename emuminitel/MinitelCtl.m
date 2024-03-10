@@ -7,6 +7,8 @@
 
 #import "MinitelCtl.h"
 
+uint32_t SimuTick = 0;
+
 @implementation MinitelCtl {
     WKUserContentController *wkuserctrl;
 }
