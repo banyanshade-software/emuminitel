@@ -40,6 +40,9 @@ static minitel_t minitels[NUM_SERIALS];
 void minitel_init_all(void)
 {
 	memset(minitels, 0, sizeof(minitels));
+	for (int i=0; i<NUM_SERIALS; i++) {
+		serial_start_rx(i);
+	}
 }
 
 void minitel_processtxdone(int mntidx)
