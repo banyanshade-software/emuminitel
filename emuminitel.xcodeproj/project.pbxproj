@@ -14,6 +14,11 @@
 		1B04EA092B9B911A00BBB9D8 /* MinitelCtl.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B04EA082B9B911A00BBB9D8 /* MinitelCtl.m */; };
 		1B04EA0F2B9B9E4100BBB9D8 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B04EA0E2B9B9E4100BBB9D8 /* WebKit.framework */; };
 		1B04EA1C2B9BA2C000BBB9D8 /* web in Resources */ = {isa = PBXBuildFile; fileRef = 1B04EA0A2B9B974700BBB9D8 /* web */; };
+		1BFFCFC42B9DC40C0036C8CA /* minitels.c in Sources */ = {isa = PBXBuildFile; fileRef = 1BFFCFB72B9DC40C0036C8CA /* minitels.c */; };
+		1BFFCFC62B9DC40C0036C8CA /* itm_debug.c in Sources */ = {isa = PBXBuildFile; fileRef = 1BFFCFBE2B9DC40C0036C8CA /* itm_debug.c */; };
+		1BFFCFC72B9DC40C0036C8CA /* lf_mqueue.c in Sources */ = {isa = PBXBuildFile; fileRef = 1BFFCFBF2B9DC40C0036C8CA /* lf_mqueue.c */; };
+		1BFFCFC82B9DC40C0036C8CA /* misc.c in Sources */ = {isa = PBXBuildFile; fileRef = 1BFFCFC02B9DC40C0036C8CA /* misc.c */; };
+		1BFFCFCC2B9DD4490036C8CA /* EmulCoord.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BFFCFCB2B9DD4490036C8CA /* EmulCoord.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,20 +29,25 @@
 		1B04E9DF2B9B8EF800BBB9D8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		1B04E9E12B9B8EF800BBB9D8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		1B04E9E32B9B8EF800BBB9D8 /* emuminitel.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = emuminitel.entitlements; sourceTree = "<group>"; };
-		1B04E9EC2B9B8EF800BBB9D8 /* emuminitelTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = emuminitelTests.m; sourceTree = "<group>"; };
-		1B04E9F62B9B8EF800BBB9D8 /* emuminitelUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = emuminitelUITests.m; sourceTree = "<group>"; };
-		1B04E9F82B9B8EF800BBB9D8 /* emuminitelUITestsLaunchTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = emuminitelUITestsLaunchTests.m; sourceTree = "<group>"; };
 		1B04EA072B9B911A00BBB9D8 /* MinitelCtl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MinitelCtl.h; sourceTree = "<group>"; };
 		1B04EA082B9B911A00BBB9D8 /* MinitelCtl.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MinitelCtl.m; sourceTree = "<group>"; };
 		1B04EA0A2B9B974700BBB9D8 /* web */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = web; sourceTree = SOURCE_ROOT; };
 		1B04EA0C2B9B9E3300BBB9D8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		1B04EA0E2B9B9E4100BBB9D8 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
-		1B04EA102B9BA21E00BBB9D8 /* app */ = {isa = PBXFileReference; lastKnownFileType = folder; name = app; path = web/app; sourceTree = "<group>"; };
-		1B04EA112B9BA21E00BBB9D8 /* font */ = {isa = PBXFileReference; lastKnownFileType = folder; name = font; path = web/font; sourceTree = "<group>"; };
-		1B04EA122B9BA21E00BBB9D8 /* library */ = {isa = PBXFileReference; lastKnownFileType = folder; name = library; path = web/library; sourceTree = "<group>"; };
-		1B04EA132B9BA21E00BBB9D8 /* css */ = {isa = PBXFileReference; lastKnownFileType = folder; name = css; path = web/css; sourceTree = "<group>"; };
-		1B04EA142B9BA21E00BBB9D8 /* index.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = index.html; path = web/index.html; sourceTree = "<group>"; };
-		1B04EA152B9BA21E00BBB9D8 /* sound */ = {isa = PBXFileReference; lastKnownFileType = folder; name = sound; path = web/sound; sourceTree = "<group>"; };
+		1BFFCFB62B9DC40C0036C8CA /* miniteltask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = miniteltask.h; sourceTree = "<group>"; };
+		1BFFCFB72B9DC40C0036C8CA /* minitels.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = minitels.c; sourceTree = "<group>"; };
+		1BFFCFB82B9DC40C0036C8CA /* miniteltask.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = miniteltask.c; sourceTree = "<group>"; };
+		1BFFCFB92B9DC40C0036C8CA /* minitels.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = minitels.h; sourceTree = "<group>"; };
+		1BFFCFBB2B9DC40C0036C8CA /* misc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = misc.h; sourceTree = "<group>"; };
+		1BFFCFBC2B9DC40C0036C8CA /* lf_mqueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lf_mqueue.h; sourceTree = "<group>"; };
+		1BFFCFBD2B9DC40C0036C8CA /* itm_debug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = itm_debug.h; sourceTree = "<group>"; };
+		1BFFCFBE2B9DC40C0036C8CA /* itm_debug.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = itm_debug.c; sourceTree = "<group>"; };
+		1BFFCFBF2B9DC40C0036C8CA /* lf_mqueue.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lf_mqueue.c; sourceTree = "<group>"; };
+		1BFFCFC02B9DC40C0036C8CA /* misc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = misc.c; sourceTree = "<group>"; };
+		1BFFCFC22B9DC40C0036C8CA /* serial.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = serial.c; sourceTree = "<group>"; };
+		1BFFCFC32B9DC40C0036C8CA /* serial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = serial.h; sourceTree = "<group>"; };
+		1BFFCFCA2B9DD4490036C8CA /* EmulCoord.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EmulCoord.h; sourceTree = "<group>"; };
+		1BFFCFCB2B9DD4490036C8CA /* EmulCoord.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EmulCoord.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,15 +65,8 @@
 		1B04E9CD2B9B8EF500BBB9D8 = {
 			isa = PBXGroup;
 			children = (
-				1B04EA102B9BA21E00BBB9D8 /* app */,
-				1B04EA132B9BA21E00BBB9D8 /* css */,
-				1B04EA112B9BA21E00BBB9D8 /* font */,
-				1B04EA142B9BA21E00BBB9D8 /* index.html */,
-				1B04EA122B9BA21E00BBB9D8 /* library */,
-				1B04EA152B9BA21E00BBB9D8 /* sound */,
+				1BFFCFB42B9DC40C0036C8CA /* src */,
 				1B04E9D82B9B8EF500BBB9D8 /* emuminitel */,
-				1B04E9EB2B9B8EF800BBB9D8 /* emuminitelTests */,
-				1B04E9F52B9B8EF800BBB9D8 /* emuminitelUITests */,
 				1B04E9D72B9B8EF500BBB9D8 /* Products */,
 				1B04EA0D2B9B9E4100BBB9D8 /* Frameworks */,
 			);
@@ -88,27 +91,12 @@
 				1B04E9DE2B9B8EF800BBB9D8 /* MainMenu.xib */,
 				1B04E9E12B9B8EF800BBB9D8 /* main.m */,
 				1B04E9E32B9B8EF800BBB9D8 /* emuminitel.entitlements */,
+				1BFFCFCA2B9DD4490036C8CA /* EmulCoord.h */,
+				1BFFCFCB2B9DD4490036C8CA /* EmulCoord.m */,
 				1B04EA072B9B911A00BBB9D8 /* MinitelCtl.h */,
 				1B04EA082B9B911A00BBB9D8 /* MinitelCtl.m */,
 			);
 			path = emuminitel;
-			sourceTree = "<group>";
-		};
-		1B04E9EB2B9B8EF800BBB9D8 /* emuminitelTests */ = {
-			isa = PBXGroup;
-			children = (
-				1B04E9EC2B9B8EF800BBB9D8 /* emuminitelTests.m */,
-			);
-			path = emuminitelTests;
-			sourceTree = "<group>";
-		};
-		1B04E9F52B9B8EF800BBB9D8 /* emuminitelUITests */ = {
-			isa = PBXGroup;
-			children = (
-				1B04E9F62B9B8EF800BBB9D8 /* emuminitelUITests.m */,
-				1B04E9F82B9B8EF800BBB9D8 /* emuminitelUITestsLaunchTests.m */,
-			);
-			path = emuminitelUITests;
 			sourceTree = "<group>";
 		};
 		1B04EA0D2B9B9E4100BBB9D8 /* Frameworks */ = {
@@ -117,6 +105,49 @@
 				1B04EA0E2B9B9E4100BBB9D8 /* WebKit.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		1BFFCFB42B9DC40C0036C8CA /* src */ = {
+			isa = PBXGroup;
+			children = (
+				1BFFCFB52B9DC40C0036C8CA /* app */,
+				1BFFCFBA2B9DC40C0036C8CA /* utils */,
+				1BFFCFC12B9DC40C0036C8CA /* serial */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		1BFFCFB52B9DC40C0036C8CA /* app */ = {
+			isa = PBXGroup;
+			children = (
+				1BFFCFB62B9DC40C0036C8CA /* miniteltask.h */,
+				1BFFCFB72B9DC40C0036C8CA /* minitels.c */,
+				1BFFCFB82B9DC40C0036C8CA /* miniteltask.c */,
+				1BFFCFB92B9DC40C0036C8CA /* minitels.h */,
+			);
+			path = app;
+			sourceTree = "<group>";
+		};
+		1BFFCFBA2B9DC40C0036C8CA /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				1BFFCFBB2B9DC40C0036C8CA /* misc.h */,
+				1BFFCFBC2B9DC40C0036C8CA /* lf_mqueue.h */,
+				1BFFCFBD2B9DC40C0036C8CA /* itm_debug.h */,
+				1BFFCFBE2B9DC40C0036C8CA /* itm_debug.c */,
+				1BFFCFBF2B9DC40C0036C8CA /* lf_mqueue.c */,
+				1BFFCFC02B9DC40C0036C8CA /* misc.c */,
+			);
+			path = utils;
+			sourceTree = "<group>";
+		};
+		1BFFCFC12B9DC40C0036C8CA /* serial */ = {
+			isa = PBXGroup;
+			children = (
+				1BFFCFC22B9DC40C0036C8CA /* serial.c */,
+				1BFFCFC32B9DC40C0036C8CA /* serial.h */,
+			);
+			path = serial;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -189,6 +220,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1BFFCFCC2B9DD4490036C8CA /* EmulCoord.m in Sources */,
+				1BFFCFC62B9DC40C0036C8CA /* itm_debug.c in Sources */,
+				1BFFCFC72B9DC40C0036C8CA /* lf_mqueue.c in Sources */,
+				1BFFCFC42B9DC40C0036C8CA /* minitels.c in Sources */,
+				1BFFCFC82B9DC40C0036C8CA /* misc.c in Sources */,
 				1B04EA092B9B911A00BBB9D8 /* MinitelCtl.m in Sources */,
 				1B04E9E22B9B8EF800BBB9D8 /* main.m in Sources */,
 				1B04E9DB2B9B8EF500BBB9D8 /* AppDelegate.m in Sources */,

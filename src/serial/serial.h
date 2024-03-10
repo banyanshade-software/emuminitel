@@ -25,11 +25,11 @@ int serial_tx_onprogress(int port);
 #define NUM_SERIALS 4
 
 
-#define _NOTIF_UART_RX		0x00000001
-#define _NOTIF_UART_TX		0x00000010
+#define _NOTIF_UART_RX		    0x00000001
+#define _NOTIF_UART_TX_DONE		0x00000010
 
-#define NOTIFY_UART_RX(_p) (_NOTIF_UART_RX<<(_p))
-#define NOTIFY_UART_TX(_p) (_NOTIF_UART_TX<<(_p))
+#define NOTIFY_UART_RX(_p)      (_NOTIF_UART_RX<<(_p))
+#define NOTIFY_UART_TX_DONE(_p) (_NOTIF_UART_TX_DONE<<(_p))
 
 typedef struct serial {
 #ifndef MINITEL_SIMULATOR

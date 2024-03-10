@@ -13,6 +13,12 @@
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customObject id="pWW-ye-1Ok" customClass="EmulCoord">
+            <connections>
+                <outlet property="m0" destination="OEM-lQ-5ov" id="Tw7-tD-okF"/>
+                <outlet property="m1" destination="Fca-of-h5i" id="UOk-Gb-Y8T"/>
+            </connections>
+        </customObject>
         <customObject id="OEM-lQ-5ov" customClass="MinitelCtl">
             <connections>
                 <outlet property="m1" destination="PoI-Kz-USp" id="chC-pY-xkX"/>

@@ -72,7 +72,7 @@ int serial_start_rx(int port)
 	while (s->txonprogress) {
 		itm_debug2(DBG_SERIAL, "Tx BLK", port, len);
 		uint32_t notif = 0;
-		xTaskNotifyWait(0, NOTIFY_UART_TX(port), &notif, portMAX_DELAY);
+		xTaskNotifyWait(0, NOTIFY_UART_TX_DONE(port), &notif, portMAX_DELAY);
 	}
 
  	s->txonprogress = 1;
@@ -124,7 +124,7 @@ void HAL_UART_TxCpltCallback(_UNUSED_ UART_HandleTypeDef *huart)
 		itm_debug1(DBG_ERR, "notask", port);
 		return;
 	}
-	xTaskNotifyFromISR(s->taskHandle, NOTIFY_UART_TX(port), eSetBits, &higher);
+	xTaskNotifyFromISR(s->taskHandle, NOTIFY_UART_TX_DONE(port), eSetBits, &higher);
 	portYIELD_FROM_ISR(higher);
 }
 

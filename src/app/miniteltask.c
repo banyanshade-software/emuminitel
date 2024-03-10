@@ -42,7 +42,7 @@ void StartMainTask(void const * argument)
 		xTaskNotifyWait(0, 0xFFFFFFFF, &notif, 1000);
 
 		for (int i=0; i<NUM_MINITELS; i++) {
-			if (notif & NOTIFY_UART_TX(i)) {
+			if (notif & NOTIFY_UART_TX_DONE(i)) {
 				minitel_processtxdone(i);
 			}
 			if (notif & NOTIFY_UART_RX(i)) {

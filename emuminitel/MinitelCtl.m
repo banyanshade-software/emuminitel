@@ -6,13 +6,21 @@
 //
 
 #import "MinitelCtl.h"
-
-uint32_t SimuTick = 0;
+//#include "serial.h"
+#import "EmulCoord.h"
 
 @implementation MinitelCtl {
     WKUserContentController *wkuserctrl;
 }
 
+- (id) init
+{
+    MinitelCtl *m = [super init];
+    if (m) {
+        m->_portNum = -1;
+    }
+    return m;
+}
 - (void) awakeFromNib
 {
     [super awakeFromNib];
@@ -66,10 +74,15 @@ uint32_t SimuTick = 0;
 }
 - (void) sendBytesToMinitel:(const uint8_t *)bytes length:(int)len
 {
+    if (_txOnProgress) {
+        NSLog(@"sendBytes but _txOnProgress");
+        abort();
+    }
     NSMutableString *s = [[NSMutableString alloc]initWithString:@"minitelSendBytes(["];
     for (int i=0; i<len; i++) {
         [s appendFormat:@"0x%2.2X%s", bytes[i], (i<len-1) ? ", " : "]);"];
     }
+    self.txOnProgress = YES;
     [_m1 evaluateJavaScript:s completionHandler:^(id v, NSError *err) {
         if (err) {
             NSLog(@"js error : %@\n", err);
@@ -98,8 +111,18 @@ uint32_t SimuTick = 0;
 {
     NSString *s = message.body;
     NSString *t = message.name;
-    
     NSLog(@"rx %@ len %d : %@", t, (int) s.length, s);
+
+    if ([t isEqual:@"ctrlflow"]) {
+        self.txOnProgress = NO;
+        minitel_tx_done(_portNum);
+    } else if ([t isEqual:@"kbd"]) {
+        uint8_t c = [s characterAtIndex:0];
+        if (!self.canRx) return;
+        minitel_rx_char(_portNum, c);
+    } else {
+        abort();
+    }
 }
 
 - (void) sendExample
