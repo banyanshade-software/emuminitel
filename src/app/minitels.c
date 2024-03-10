@@ -20,13 +20,10 @@
 // state
 typedef enum {
 	state_init = 0,
-	state_q1_tx,
-    state_q1,
-    state_s1_tx,
-    state_s2_tx,
-    state_wait_s2,
-    state_s3_tx,
-    state_s3
+	state_q1_tx,    // sending id request
+    state_q1,       // waiting for id response
+    state_msg_tx,   // sending part of page
+    state_wait,     // page done
 } __attribute((packed)) minitel_state_t;
 
 typedef struct minitel {
@@ -35,6 +32,8 @@ typedef struct minitel {
     uint8_t rxseq; // for multiple car replies
     uint8_t model;
     uint8_t ntick;
+    uint8_t pagenum;
+    uint8_t msgnum;
 } __attribute((packed)) minitel_t;
 
 static minitel_t minitels[NUM_SERIALS];
@@ -42,188 +41,38 @@ static minitel_t minitels[NUM_SERIALS];
 #define SET_STATE(_idx, _m, _newstate) do {                      \
 	itm_debug3(DBG_MTEL, "state", _idx, (_m)->state, _newstate); \
 	(_m)->state = (_newstate);                                   \
+    if ((_newstate) == state_wait) (_m)->ntick = 0;              \
 } while(0)
 
-#pragma mark -
+// --------------------------------------------------------------------------------------
+// --------------------------------------------------------------------------------------
+// --------------------------------------------------------------------------------------
 
 
-static int process_id_car(int mntidx, minitel_t *m, uint8_t car);
-static void send_welcome_msg(int mntidx, minitel_t *m);
+
+typedef struct {
+    uint16_t len;
+    union {
+        const uint8_t *string; // if len>0
+        void (*func)(int mntidx, minitel_t *m); // if len=0
+    };
+} fragment_t;
+
+static const uint8_t welcome_msg[] = "\x0C\x0F\x1B\x0F" "Bonjour votre minitel est un :\n\n\r     \x1B\x4D";
+static const uint8_t press_msg[] = "\x1B\x4C" "\n\n\n\n\n\n\rAppuyez sur SUITE\n\r";
 static void send_model_msg(int mntidx, minitel_t *m);
-static void send_mitterand(int mntidx, minitel_t *m);
 
-#pragma mark -
-void minitel_init_all(void)
-{
-	memset(minitels, 0, sizeof(minitels));
-	for (int i=0; i<NUM_SERIALS; i++) {
-		serial_start_rx(i);
-	}
-}
+#define _FRAG_STR(_var) {.len=sizeof(_var), .string=_var}
+#define _FRAG_END {.len=0, .func=NULL}
 
-void minitel_processtxdone(int mntidx)
-{
-	minitel_t *m = &minitels[mntidx];
-	switch (m->state) {
-	case state_q1_tx:
-		SET_STATE(mntidx, m, state_q1);
-		break;
-    case state_s1_tx:
-        send_model_msg(mntidx, m);
-        SET_STATE(mntidx, m, state_s2_tx);
-        break;
-    case state_s2_tx:
-        m->ntick = 0;
-        SET_STATE(mntidx, m, state_wait_s2);
-        break;
-    case state_s3_tx:
-        SET_STATE(mntidx, m, state_s3);
-        break;
-        
-    case state_wait_s2:
-	case state_init:
-	case state_q1:
-    case state_s3:
-        break;
-	}
-}
-
-static void minitel_process_rxchar(int mntidx, minitel_t *m, uint8_t car);
-
-void minitel_processrx(int mntidx)
-{
-	minitel_t *m   = &minitels[mntidx];
-	serial_t  *ser = &serials[mntidx];
-	for (;;) {
-		uint8_t  c;
-		int rc = mqf_read(ser->rxqueue, &c);
-		if (rc) break;
-		minitel_process_rxchar(mntidx, m, c);
-	}
-}
-
-static void minitel_process_rxchar(int mntidx, minitel_t *m, uint8_t car)
-{
-	switch (m->state) {
-    default:
-	case state_init:
-	case state_q1_tx:
-		itm_debug3(DBG_MTEL, "ign car", mntidx, m->state, car);
-		break;
-	case state_q1:
-		itm_debug2(DBG_MTEL, "id car", mntidx,  car);
-        int rc = process_id_car(mntidx, m, car);
-            if (rc>0) {
-                send_welcome_msg(mntidx, m);
-                SET_STATE(mntidx, m, state_s1_tx);
-            }
-		break;
-
-	}
-}
-
-
-// PRO1 ESC 39
-// ! 29 ! PRO1 7B ({)        ! Lecture ROM (Identification du terminal).          !
-
-static const uint8_t mnt_ping[] = { 0x1B, 0x39, 0x7B };
-//static const uint8_t mnt_ping[] = "coucou\n";
-
-void minitel_tick(int mntidx, uint32_t tick)
-{
-	minitel_t *m = &minitels[mntidx];
-
-	switch(m->state) {
-	case state_init:
-    case state_q1:
-        m->rxseq = 0;
-		serial_send_bytes(mntidx, mnt_ping, sizeof(mnt_ping), 0);
-		SET_STATE(mntidx, m, state_q1_tx);
-		break;
-    case state_wait_s2:
-        if (m->ntick++>=5) {
-            send_mitterand(mntidx, m);
-            SET_STATE(mntidx, m, state_s3_tx);
-        }
-        break;
-	default:
-		break;
-	}
-}
-
-
-#pragma mark -
-
-
-
-static int process_id_car(int mntidx, minitel_t *m, uint8_t car)
-{
-    switch(m->rxseq) {
-        case 0:
-            if (car != 0x01) return 0;
-            break;
-        case 1:
-            // manufacturer
-            break;
-        case 2:
-            m->model = car;
-            break;
-        case 3:
-            // version
-            break;
-        case 4:
-            m->rxseq = 0;
-            if (car != 0x04) {
-                return 0;
-            }
-            return 1;
-    }
-    m->rxseq++;
-    return 0;
-}
-
-// --------- minitel models
-static const char *models1[]={
-    "Minitel 1 nr abcd",
-    "Minitel 1 nr",
-    "minitel 10 nr",
-    "Minitel 1 couleur nr",
-    "Minitel 10",
-    "emulateur",
+static const fragment_t frag_welcome[] = {
+    _FRAG_STR(welcome_msg),
+    {.len=0, .func=send_model_msg},
+    _FRAG_STR(press_msg),
+    _FRAG_END
 };
-static const char *models2[]={
-    "Minitel 1",
-    "Minitel 1 couleur",
-    "Terminatel 252.",
-    "Minitel 1 Bi-standard",
-    "Minitel 2",
-    "Minitel 10 Bi-standard",
-    "(Thomson?)",
-    "Minitel 5",
-    "Minitel 12"
-};
-static const char inconnu[] = "inconnu";
-static const uint8_t welcome_msg[] = "Bonjour votre minitel est un :\n\n\r     \x1B\x4D";
 
-static void send_welcome_msg(int mntidx, minitel_t *m)
-{
-    serial_send_bytes(mntidx, welcome_msg, sizeof(welcome_msg), 0);
-}
-static void send_model_msg(int mntidx, minitel_t *m)
-{
-    const char *str;
-
-    if ((0)) {}
-    else if (m->model<0x62) str = inconnu;
-    else if (m->model>0x7A) str = inconnu;
-    else if ((m->model>0x67) && (m->model<0x72)) str = inconnu;
-    else if (m->model<0x72) {
-        str = models1[m->model-0x62];
-    } else {
-        str = models2[m->model-0x72];
-    }
-    serial_send_bytes(mntidx, (uint8_t *)str, (int)strlen(str), 0);
-}
+// --------------------------
 
 static const uint8_t mitterand[] = {
     0x0c, 0x1f, 0x41, 0x41, 0x0e, 0x1b, 0x54, 0x1b, 0x47, 0x1b, 0x59, 0x1b, 0x49, 0x20, 0x12, 0x45
@@ -300,8 +149,303 @@ static const uint8_t mitterand[] = {
   , 0x46, 0x1f, 0x46, 0x5f, 0x1b, 0x4f, 0x1b, 0x48, 0x35, 0x31, 0x1b, 0x4d, 0x2c, 0x1b, 0x4f, 0x1b
   , 0x48, 0x37
       };
+static const fragment_t frag_mitterand[] = {
+    _FRAG_STR(mitterand),
+    _FRAG_END
+};
 
-static void send_mitterand(int mntidx, minitel_t *m)
+static const uint8_t thatsall[] = {
+  0x0c, 0x0f, 0x1f, 0x44, 0x54, 0x42, 0x69, 0x65, 0x6e, 0x76, 0x65, 0x6e, 0x75, 0x65, 0x20, 0x64
+, 0x61, 0x6e, 0x73, 0x20, 0x6c, 0x65, 0x73, 0x1f, 0x45, 0x54, 0x61, 0x6e, 0x6e, 0x19, 0x42, 0x65
+, 0x65, 0x73, 0x20, 0x38, 0x30, 0x73, 0x20, 0x21, 0x21, 0x1f, 0x4b, 0x46, 0x1b, 0x4e, 0x43, 0x27
+, 0x19, 0x42, 0x65, 0x74, 0x61, 0x69, 0x74, 0x1f, 0x4e, 0x4f, 0x1b, 0x4f, 0x6d, 0x69, 0x65, 0x75
+, 0x78, 0x1f, 0x51, 0x56, 0x1b, 0x48, 0x1b, 0x4e, 0x61, 0x76, 0x61, 0x6e, 0x74, 0x1b, 0x4c, 0x1f
+, 0x56, 0x46, 0x43, 0x27, 0x65, 0x73, 0x74, 0x20, 0x74, 0x6f, 0x75, 0x74, 0x20, 0x70, 0x6f, 0x75
+, 0x72, 0x20, 0x61, 0x75, 0x6a, 0x6f, 0x75, 0x72, 0x64, 0x27, 0x68, 0x75, 0x69
+};
+
+
+static const fragment_t frag_page_end[] = {
+    _FRAG_STR(thatsall),
+    _FRAG_END
+};
+
+static const fragment_t *pages[] = {
+    frag_welcome,
+    frag_mitterand,
+    frag_page_end
+};
+
+#define PAGE_WELCOME    0
+#define PAGE_MITTERAND  1
+#define PAGE_END        2
+
+// --------------------------------------------------------------------------------------
+// --------------------------------------------------------------------------------------
+
+
+static int send_message(int mntidx, minitel_t *m)
 {
-    serial_send_bytes(mntidx, mitterand, sizeof(mitterand), 0);
+    const fragment_t *f = pages[m->pagenum];
+    const fragment_t *frag = &f[m->msgnum];
+    if (frag->len) {
+        serial_send_bytes(mntidx, frag->string, frag->len, 0);
+    } else {
+        if (!frag->func) {
+            return -1;
+        } else {
+            frag->func(mntidx, m);
+        }
+    }
+    m->msgnum++;
+    return 0;
 }
+
+static void start_page(int mntidx, minitel_t *m, uint8_t pagenum)
+{
+    m->pagenum = pagenum;
+    m->msgnum = 0;
+    m->rxseq = 0;
+    send_message(mntidx, m);
+    SET_STATE(mntidx, m, state_msg_tx);
+}
+
+static int process_id_car(int mntidx, minitel_t *m, uint8_t car);
+
+
+// --------------------------------------------------------------------------------------
+// --------------------------------------------------------------------------------------
+// --------------------------------------------------------------------------------------
+// --------------------------------------------------------------------------------------
+
+
+void minitel_init_all(void)
+{
+	memset(minitels, 0, sizeof(minitels));
+	for (int i=0; i<NUM_SERIALS; i++) {
+		serial_start_rx(i);
+	}
+}
+
+void minitel_processtxdone(int mntidx)
+{
+	minitel_t *m = &minitels[mntidx];
+    int rc;
+	switch (m->state) {
+	case state_q1_tx:
+		SET_STATE(mntidx, m, state_q1);
+		break;
+    case state_msg_tx:
+        rc = send_message(mntidx, m);
+        if (rc) {
+            SET_STATE(mntidx, m, state_wait);
+        }
+        break;
+    
+        
+    case state_wait:
+	case state_init:
+	case state_q1:
+	default:
+        break;
+	}
+}
+
+static void minitel_process_rxchar(int mntidx, minitel_t *m, uint8_t car);
+
+void minitel_processrx(int mntidx)
+{
+	minitel_t *m   = &minitels[mntidx];
+	serial_t  *ser = &serials[mntidx];
+	for (;;) {
+		uint8_t  c;
+		int rc = mqf_read(ser->rxqueue, &c);
+		if (rc) break;
+		minitel_process_rxchar(mntidx, m, c);
+	}
+}
+
+typedef enum {
+    touche_envoi = 128,
+    touche_repetition,
+    touche_retour,
+    touche_guide,
+    touche_annulation,
+    touche_sommaire,
+    touche_correction,
+    touche_suite,
+    touche_cnxfin
+} ext_car_t;
+
+static int process_extended_car(int mntidx, minitel_t *m, uint8_t car)
+{
+	if (0x13 == car) {
+		m->rxseq = 1;
+		return 0;
+	} else if (m->rxseq==1) {
+		m->rxseq = 0;
+		switch (car) {
+		default:
+			itm_debug2(DBG_MTEL, "?kbd", mntidx, car);
+			return 0;
+		case 0x41: return touche_envoi;
+		case 0x42: return touche_repetition;
+		case 0x43: return touche_retour;
+		case 0x44: return touche_guide;
+		case 0x45: return touche_annulation;
+		case 0x46: return touche_sommaire;
+		case 0x47: return touche_correction;
+		case 0x48: return touche_suite;
+		case 0x49: return touche_cnxfin;
+		}
+	} else {
+		return car;
+    }
+}
+static void minitel_process_rxchar(int mntidx, minitel_t *m, uint8_t car)
+{
+	itm_debug2(DBG_MTEL, "kbd", mntidx, car);
+
+	int xc;
+	switch (m->state) {
+	default:
+	case state_init:
+	case state_q1_tx:
+		itm_debug3(DBG_MTEL, "ign car", mntidx, m->state, car);
+		break;
+	case state_q1:
+		itm_debug2(DBG_MTEL, "id car", mntidx,  car);
+		int rc = process_id_car(mntidx, m, car);
+		if (rc>0) {
+			start_page(mntidx, m, PAGE_WELCOME);
+		}
+		break;
+
+	case state_msg_tx:
+		// do we accept input while transmitting ?
+		break;
+	case state_wait:
+		xc = process_extended_car(mntidx, m, car);
+		if (!xc) return;
+		if (touche_sommaire == xc) {
+			start_page(mntidx, m, PAGE_WELCOME);
+			break;
+		}
+		switch (m->pagenum) {
+		case PAGE_WELCOME:
+			if (touche_suite == xc) {
+				start_page(mntidx, m, PAGE_MITTERAND);
+			}
+			break;
+		default:
+			break;
+		}
+		break;
+	}
+}
+
+
+// PRO1 ESC 39
+// ! 29 ! PRO1 7B ({)        ! Lecture ROM (Identification du terminal).          !
+
+static const uint8_t mnt_ping[] = { 0x1B, 0x39, 0x7B };
+//static const uint8_t mnt_ping[] = "coucou\n";
+
+void minitel_tick(int mntidx, uint32_t tick)
+{
+	minitel_t *m = &minitels[mntidx];
+
+	switch(m->state) {
+	case state_init:
+	case state_q1:
+		m->rxseq = 0;
+		serial_send_bytes(mntidx, mnt_ping, sizeof(mnt_ping), 0);
+		SET_STATE(mntidx, m, state_q1_tx);
+		break;
+	case state_wait:
+		// differnt on pages
+		if (m->pagenum == PAGE_END) break;
+		if (m->pagenum == PAGE_WELCOME) break;
+		if (m->ntick++>=5) {
+			start_page(mntidx, m, m->pagenum+1);
+		}
+		break;
+	default:
+		break;
+	}
+}
+
+
+// --------------------------------------------------------------------------------------
+// identification processing
+// --------------------------------------------------------------------------------------
+
+
+
+
+static int process_id_car(int mntidx, minitel_t *m, uint8_t car)
+{
+	switch(m->rxseq) {
+	default:
+	case 0:
+		if (car != 0x01) return 0;
+		break;
+	case 1:
+		// manufacturer
+		break;
+	case 2:
+		m->model = car;
+		break;
+	case 3:
+		// version
+		break;
+	case 4:
+		m->rxseq = 0;
+		if (car != 0x04) {
+			return 0;
+		}
+		return 1;
+	}
+	m->rxseq++;
+	return 0;
+}
+
+// --------- minitel models
+static const char *models1[]={
+    "Minitel 1 nr abcd",
+    "Minitel 1 nr",
+    "minitel 10 nr",
+    "Minitel 1 couleur nr",
+    "Minitel 10",
+    "emulateur",
+};
+static const char *models2[]={
+    "Minitel 1",
+    "Minitel 1 couleur",
+    "Terminatel 252.",
+    "Minitel 1 Bi-standard",
+    "Minitel 2",
+    "Minitel 10 Bi-standard",
+    "(Thomson?)",
+    "Minitel 5",
+    "Minitel 12"
+};
+static const char inconnu[] = "inconnu";
+
+
+static void send_model_msg(int mntidx, minitel_t *m)
+{
+    const char *str;
+
+    if ((0)) {}
+    else if (m->model<0x62) str = inconnu;
+    else if (m->model>0x7A) str = inconnu;
+    else if ((m->model>0x67) && (m->model<0x72)) str = inconnu;
+    else if (m->model<0x72) {
+        str = models1[m->model-0x62];
+    } else {
+        str = models2[m->model-0x72];
+    }
+    serial_send_bytes(mntidx, (uint8_t *)str, (int)strlen(str), 0);
+}
+

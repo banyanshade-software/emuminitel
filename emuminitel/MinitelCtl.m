@@ -132,9 +132,11 @@
         self.txOnProgress = NO;
         minitel_tx_done(_portNum);
     } else if ([t isEqual:@"kbd"]) {
-        uint8_t c = [s characterAtIndex:0];
         if (!self.canRx) return;
-        minitel_rx_char(_portNum, c);
+        for (int i=0; i<s.length; i++) {
+            uint8_t c = [s characterAtIndex:i];
+            minitel_rx_char(_portNum, c);
+        }
     } else {
         abort();
     }
