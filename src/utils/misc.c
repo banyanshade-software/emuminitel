@@ -22,7 +22,7 @@
 
 void flash_led(void)
 {
-#ifndef TRAIN_SIMU
+#ifndef MINITEL_SIMULATOR
 
 #ifndef BOARD_LED_GPIO_Port
 #ifdef  LD2_GPIO_Port
@@ -42,13 +42,9 @@ void flash_led(void)
 	//HAL_GPIO_TogglePin(GPIOC,GPIO_PIN_13);
 #endif
 
-#endif /* TRAIN_SIMU */
+#endif /* MINITEL_SIMULATOR */
 }
 
-
-#ifndef MINITEL_SIMULATOR
-#else //MINITEL_SIMULATOR
-#endif //MINITEL_SIMULATOR
 
 
 
