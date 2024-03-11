@@ -25,7 +25,7 @@ typedef struct {
 
 // put msg queues in CCM ram, if any
 //#define MQF_ATTRIB
-#ifndef TRAIN_SIMU
+#ifndef MINITEL_SIMULATOR
 #define MQF_ATTRIB __attribute__((section(".ccmram")))
 #else
 #define MQF_ATTRIB
